@@ -3,7 +3,17 @@
     <li class="mr-6">
       <a
         class="text-white hover:text-blue-800"
-        routerLink="/home"
+        [routerLink]="'/'"
+        routerLinkActive="font-bold underline"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Logo
+      </a>
+    </li>
+    <li class="mr-6">
+      <a
+        class="text-white hover:text-blue-800"
+        [routerLink]="'/home'"
         routerLinkActive="font-bold underline"
         [routerLinkActiveOptions]="{ exact: true }"
       >
@@ -13,7 +23,7 @@
     <li class="mr-6">
       <a
         class="text-white hover:text-blue-800"
-        routerLink="/movies"
+        [routerLink]="'/movies'"
         routerLinkActive="font-bold underline"
       >
         Movies
