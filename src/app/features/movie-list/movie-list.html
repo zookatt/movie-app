@@ -1,5 +1,10 @@
-<ul>
-  <li><a [routerLink]="['/movies', '1']">Movie 1</a></li>
-  <li><a [routerLink]="['/movies', '2']">Movie 2</a></li>
-  <li><a [routerLink]="['/movies', '3']">Movie 3</a></li>
+<ul class="container mx-auto grid grid-cols-3 gap-1.5 p-5">
+  @for (movie of movies; track movie.id) {
+    <li class="flex flex-col items-center">
+      <a [routerLink]="['/movies', 'movie.id']">{{ movie.title }}</a>
+      <p>{{ movie.id }}</p>
+      <p>{{ movie.genre }}</p>
+      <p>{{ movie.director }}</p>
+    </li>
+  }
 </ul>

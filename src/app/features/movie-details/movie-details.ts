@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
@@ -8,6 +8,5 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   styleUrl: './movie-details.css',
 })
 export class MovieDetails {
-  private route = inject(ActivatedRoute);
-  movieId = this.route.snapshot.paramMap.get('movieId');
+  movieId = input.required<string>();
 }
