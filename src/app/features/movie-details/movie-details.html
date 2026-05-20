@@ -1,3 +1,55 @@
-<h1>Bienvenido a la pagina de Película especifica</h1>
-<a [routerLink]="'/movies'">Movie list</a>
-<p>Pelicula: {{ movieId() }}</p>
+<section
+  class="flex min-h-screen items-center justify-center bg-black px-6 py-10 text-white"
+>
+  @if (movie(); as movie) {
+    <article
+      class="grid w-full max-w-5xl overflow-hidden rounded-lg bg-zinc-900 shadow-lg md:grid-cols-2"
+    >
+      <div class="flex min-h-64 items-start bg-red-700 p-6">
+        <span class="rounded bg-black px-3 py-1 text-sm font-semibold">
+          Top pick
+        </span>
+      </div>
+
+      <div class="flex flex-col justify-center p-8">
+        <p class="mb-2 text-sm font-semibold uppercase text-red-500">
+          {{ movie.genre }}
+        </p>
+        <h1 class="mb-4 text-4xl font-bold">{{ movie.title }}</h1>
+        <p class="mb-3 text-lg text-gray-200">
+          Dirigida por <strong>{{ movie.director }}</strong>
+        </p>
+        <p class="mb-6 text-gray-300">
+          Una ficha sencilla para mostrar la pelicula seleccionada.
+        </p>
+
+        <button
+          class="w-fit rounded bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700"
+          type="button"
+          (click)="goBack()"
+        >
+          Volver al listado
+        </button>
+      </div>
+    </article>
+  } @else {
+    <article class="w-full max-w-2xl rounded-lg bg-zinc-900 p-8 shadow-lg">
+      <p class="mb-2 text-sm font-semibold uppercase text-red-500">
+        No disponible
+      </p>
+      <h1 class="mb-4 text-4xl font-bold">Pelicula no encontrada</h1>
+      <p class="mb-6 text-gray-300">
+        No existe ninguna pelicula con ese identificador o la URL no coincide
+        con un elemento del catalogo.
+      </p>
+
+      <button
+        class="rounded bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700"
+        type="button"
+        (click)="goBack()"
+      >
+        Volver al listado
+      </button>
+    </article>
+  }
+</section>

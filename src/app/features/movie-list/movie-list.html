@@ -1,10 +1,35 @@
-<ul class="container mx-auto grid grid-cols-3 gap-1.5 p-5">
-  @for (movie of movies; track movie.id) {
-    <li class="flex flex-col items-center">
-      <a [routerLink]="['/movies', 'movie.id']">{{ movie.title }}</a>
-      <p>{{ movie.id }}</p>
-      <p>{{ movie.genre }}</p>
-      <p>{{ movie.director }}</p>
-    </li>
-  }
-</ul>
+<section class="min-h-screen bg-black px-6 py-10 text-white">
+  <div class="mx-auto mb-8 max-w-6xl">
+    <p class="mb-2 text-sm font-bold uppercase tracking-[0.2em] text-red-600">
+      Movie App
+    </p>
+    <h1 class="mb-3 text-4xl font-bold">Catalogo de peliculas</h1>
+    <p class="max-w-2xl text-gray-300">
+      Explora una seleccion de peliculas con una interfaz sencilla inspirada en
+      Netflix.
+    </p>
+  </div>
+
+  <ul class="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (movie of movies; track movie.id) {
+      <li class="rounded-lg bg-zinc-900 p-5 shadow-md">
+        <div
+          class="mb-4 flex h-40 items-end rounded-md bg-red-700 p-4 text-sm font-bold"
+        >
+          #{{ movie.id }}
+        </div>
+
+        <p class="mb-2 text-sm font-semibold uppercase text-red-500">
+          {{ movie.genre }}
+        </p>
+        <a
+          class="mb-2 block text-2xl font-bold text-white hover:text-red-400"
+          [routerLink]="['/movies', movie.id]"
+        >
+          {{ movie.title }}
+        </a>
+        <p class="text-gray-300">{{ movie.director }}</p>
+      </li>
+    }
+  </ul>
+</section>
