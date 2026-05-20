@@ -1,0 +1,46 @@
+<div class="min-h-screen bg-black text-white">
+  <header class="border-b border-zinc-800 bg-zinc-950">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a
+        class="text-xl font-bold text-red-600"
+        [routerLink]="'/'"
+        routerLinkActive="underline"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Movie App
+      </a>
+
+      <ul class="flex items-center gap-6 text-sm font-medium">
+        <li>
+          <a
+            class="text-white hover:text-red-400"
+            [routerLink]="'/'"
+            routerLinkActive="text-red-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            class="text-white hover:text-red-400"
+            [routerLink]="'/movies'"
+            routerLinkActive="text-red-500"
+          >
+            Movies
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="border-t border-zinc-800 bg-zinc-950">
+    <div class="mx-auto max-w-6xl px-6 py-4 text-sm text-zinc-400">
+      Movie App - Catalogo de peliculas
+    </div>
+  </footer>
+</div>

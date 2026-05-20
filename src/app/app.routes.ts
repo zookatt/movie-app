@@ -1,13 +1,20 @@
 import { Routes } from '@angular/router';
 import { Home } from './features/home/home';
-import { MovieList } from './features/movie-list/movie-list';
+import { Layout } from './features/layout/layout';
 import { MovieDetails } from './features/movie-details/movie-details';
+import { MovieList } from './features/movie-list/movie-list';
 import { NotFound } from './features/not-found/not-found';
 
 export const routes: Routes = [
-  { path: '', component: Home }, // ruta raíz: '' al componente "Home",
-  { path: 'home', redirectTo: '', pathMatch: 'full' }, // ruta de redirección al componente "Home". Trabaja el atributo pathMatch.
-  { path: 'movies', component: MovieList }, // ruta 'movies' al componente MovieList,
-  { path: 'movies/:movieId', component: MovieDetails }, // ruta dinámica: 'movies/:movieId' al componente MovieDetails,
-  { path: '**', component: NotFound }, // ruta comodín:'**' al componente NotFound
+  {
+    path: '',
+    component: Layout,
+    children: [
+      { path: '', component: Home },
+      { path: 'home', redirectTo: '', pathMatch: 'full' },
+      { path: 'movies', component: MovieList },
+      { path: 'movies/:movieId', component: MovieDetails },
+    ],
+  },
+  { path: '**', component: NotFound },
 ];
