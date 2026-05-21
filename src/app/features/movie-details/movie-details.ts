@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movies } from '../../services/movies';
-
+import { MovieInterface,  } from '../../intefaces/movie-interface';
 @Component({
   selector: 'app-movie-details',
   imports: [],
