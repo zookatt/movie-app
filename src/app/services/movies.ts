@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { MovieInterface } from '../intefaces/movie-interface';
 import { environment } from '../enviroments/enviroments';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,10 +24,15 @@ export class Movies {
       .pipe(
         map((data: any) =>
           data.results.map((e: any) => ({
-            ...e,
+            id: String(e.id),
+            title: e.title,
+            overview: e.overview,
             poster_path: this.tmdbImg.concat(e.poster_path),
           })),
         ),
+        tap((movies: MovieInterface[]) => {
+          this.movies = movies;
+        }),
       );
   }
 

@@ -1,23 +1,22 @@
-<section
-  class="flex min-h-screen items-center justify-center bg-black px-6 py-10 text-white"
->
+<section class="flex min-h-screen items-center justify-center bg-black px-6 py-10 text-white">
+  @if (movie(); as selectedMovie) {
     <article
       class="grid w-full max-w-5xl overflow-hidden rounded-lg bg-zinc-900 shadow-lg md:grid-cols-2"
     >
-      <div class="flex min-h-64 items-start bg-red-700 p-6">
-        <span class="rounded bg-black px-3 py-1 text-sm font-semibold">
-          Top pick
-        </span>
+      <div class="bg-zinc-950">
+        <img
+          class="h-full min-h-64 w-full object-cover"
+          [src]="selectedMovie.poster_path"
+          [alt]="selectedMovie.title"
+        />
       </div>
 
       <div class="flex flex-col justify-center p-8">
-       
-        <h1 class="mb-4 text-4xl font-bold">{{ movie()?.title }}</h1>
-       
-        <p class="mb-6 text-gray-300">
-          Una ficha sencilla para mostrar la pelicula seleccionada.
+        <p class="mb-2 text-sm font-semibold uppercase text-red-500">ID: {{ selectedMovie.id }}</p>
+        <h1 class="mb-4 text-4xl font-bold">{{ selectedMovie.title }}</h1>
+        <p class="mb-2 text-sm font-semibold uppercase text-red-500">
+          ID: {{ selectedMovie.overview }}
         </p>
-
         <button
           class="w-fit rounded bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700"
           type="button"
@@ -27,8 +26,17 @@
         </button>
       </div>
     </article>
-  
+  } @else {
+    <article class="w-full max-w-2xl rounded-lg bg-zinc-900 p-8 text-center shadow-lg">
+      <h1 class="mb-4 text-3xl font-bold">Pelicula no encontrada</h1>
+      <p class="mb-6 text-gray-300">Vuelve al listado y selecciona una pelicula disponible.</p>
+      <button
+        class="rounded bg-red-600 px-5 py-3 font-semibold text-white hover:bg-red-700"
+        type="button"
+        (click)="goBack()"
+      >
+        Volver al listado
+      </button>
+    </article>
+  }
 </section>
-
-
-
